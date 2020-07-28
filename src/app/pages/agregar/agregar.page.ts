@@ -29,6 +29,22 @@ export class AgregarPage implements OnInit {
     this.deseosService.guardarStorage();
 
   }
+  cambioCheck(item: ListaItem){
+    const pendientes = this.lista.items.filter(itemData=> !itemData.completado).length;
+    if(pendientes ===0){
+      this.lista.terminada = true;
+      this.lista.terminadaEn = new Date();
+    }else{
+      this.lista.terminada = false;
+      this.lista.terminadaEn = null;
+    }
+    this.deseosService.guardarStorage()
+  }
+  borrar(i:number){
+    this.lista.items.splice(i,1);
+    this.deseosService.guardarStorage();
+
+  }
 
   ngOnInit() {
   }
