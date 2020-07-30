@@ -8,10 +8,12 @@
 
 <ion-content [fullscreen]="true" color="dark">
     <ion-list color="dark">
-        <ion-item color="dark" *ngFor="let lista of deseosservice.listas" detail>
+        <app-listas></app-listas>
+        <ion-item color="dark" *ngFor="let lista of deseosservice.listas" (click)="listaSeleccionada(lista)" detail>
             <ion-label>
                 {{ lista.titulo }}
             </ion-label>
+            <ion-note slot="end" color="tertiary">{{ lista.items.length }} Items</ion-note>
         </ion-item>
     </ion-list>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
